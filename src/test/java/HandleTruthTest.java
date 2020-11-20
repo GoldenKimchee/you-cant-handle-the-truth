@@ -3,6 +3,7 @@ import org.junit.Test;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 public class HandleTruthTest {
     @Test
@@ -57,7 +58,7 @@ public class HandleTruthTest {
 
         Set<String> set4 = new HashSet<>();
         set4.add("code, real, vs, life");
-        expect3.put(2, set4);
+        expect3.put(1, set4);
 
         Set<String> set3 = new HashSet<>();
         set3.add("bugs, in");
@@ -101,13 +102,14 @@ public class HandleTruthTest {
         //end of expected cases_______________________________________________________
 
 
-        for (int i = 0; i < expectedCases.length; i++) {
+        for (int i = 0; i < testCases.length; i++) {
             //actual cases generated here
             TreeMap<Integer, Set<String>> actual = HandleTruth.wordCount(testCases[i]);
-
             TreeMap<Integer, Set<String>> expected = expectedCases[i];
+            //printing out the result
             System.out.println(actual);
-            assertEquals(expected, actual);
+            System.out.println(expected);
+            assertEquals(actual, expected);
         }
     }
 }
