@@ -2,25 +2,12 @@ import org.junit.Test;
 
 import java.util.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.*;
 
 public class HandleTruthTest {
     @Test
     public void makeshiftTest() {
-        String[] examples = {
-                "",
-                "hi my name is rachel and well well well idk",
-                "bugs in code vs bugs in real life",
-                "ha ha ha ha ha ha ho",
-                "gobble gobble smack smack yum yam gobble gouble yo yum"
-        };
-
-        for (String sentence: examples) {
-            TreeMap<Integer, Set<String>> returned = HandleTruth.wordCount(sentence);
-            System.out.println(returned);
-            System.out.println(returned.get(8));
-        }
+        assertTrue(true);
     }
 
     @Test
@@ -38,56 +25,46 @@ public class HandleTruthTest {
         //1st case
         TreeMap<Integer, Set<String>> expect1 = new TreeMap<>(Collections.reverseOrder());
 
-        Set<String> set0 = new HashSet<>();
-        set0.add("bruh");
+        Set<String> set0 = new HashSet<>(Arrays.asList("bruh"));
         expect1.put(1, set0);
 
         //2nd case
         TreeMap<Integer, Set<String>> expect2 = new TreeMap<>(Collections.reverseOrder());
 
-        Set<String> set2 = new HashSet<>();
-        set2.add("hi, idk, rachel, and, name, is, my");
+        Set<String> set2 = new HashSet<>(Arrays.asList("hi", "idk", "rachel", "and", "name", "is", "my"));
         expect2.put(1, set2);
 
-        Set<String> set1 = new HashSet<>();
-        set1.add("well");
+        Set<String> set1 = new HashSet<>(Arrays.asList("well"));
         expect2.put(3, set1);
 
         //3rd case
         TreeMap<Integer, Set<String>> expect3 = new TreeMap<>(Collections.reverseOrder());
 
-        Set<String> set4 = new HashSet<>();
-        set4.add("code, real, vs, life");
+        Set<String> set4 = new HashSet<>(Arrays.asList("code", "real", "vs", "life"));
         expect3.put(1, set4);
 
-        Set<String> set3 = new HashSet<>();
-        set3.add("bugs, in");
+        Set<String> set3 = new HashSet<>(Arrays.asList("bugs", "in"));
         expect3.put(2, set3);
 
         //4th case
         TreeMap<Integer, Set<String>> expect4 = new TreeMap<>(Collections.reverseOrder());
 
-        Set<String> set5 = new HashSet<>();
-        set5.add("ha");
+        Set<String> set5 = new HashSet<>(Arrays.asList("ha"));
         expect4.put(6, set5);
 
-        Set<String> set6 = new HashSet<>();
-        set6.add("ho");
+        Set<String> set6 = new HashSet<>(Arrays.asList("ho"));
         expect4.put(1, set6);
 
         //5th case
         TreeMap<Integer, Set<String>> expect5 = new TreeMap<>(Collections.reverseOrder());
 
-        Set<String> set7 = new HashSet<>();
-        set7.add("gobble");
+        Set<String> set7 = new HashSet<>(Arrays.asList("gobble"));
         expect5.put(3, set7);
 
-        Set<String> set8 = new HashSet<>();
-        set8.add("yum, smack");
+        Set<String> set8 = new HashSet<>(Arrays.asList("yum", "smack"));
         expect5.put(2, set8);
 
-        Set<String> set9 = new HashSet<>();
-        set9.add("yam, yo, gouble");
+        Set<String> set9 = new HashSet<>(Arrays.asList("yam", "yo", "gouble"));
         expect5.put(1, set9);
 
 
@@ -106,9 +83,6 @@ public class HandleTruthTest {
             //actual cases generated here
             TreeMap<Integer, Set<String>> actual = HandleTruth.wordCount(testCases[i]);
             TreeMap<Integer, Set<String>> expected = expectedCases[i];
-            //printing out the result
-            System.out.println(actual);
-            System.out.println(expected);
             assertEquals(actual, expected);
         }
     }
